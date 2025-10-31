@@ -1,9 +1,8 @@
 # API de Produtos 🛒
 
-![.NET](https://img.shields.io/badge/.NET-purple?style=for-the-badge&logo=dotnet)
-![C#](https://img.shields.io/badge/C%20Sharp-blue?style=for-the-badge&logo=c-sharp)
-![SQLite](https://img.shields.io/badge/SQLite-green?style=for-the-badge&logo=sqlite)
-![API Status](https://img.shields.io/badge/API-black?style=for-the-badge)
+![SQL](https://img.shields.io/badge/sqlite-4479A1.svg?style=for-the-badge&logo=sql&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 API RESTful desenvolvida em **C#** com **ASP.NET Core**, utilizando **Entity Framework Core** com **SQLite**. Permite gerenciar produtos com **CRUD completo**.
 
@@ -43,11 +42,11 @@ API RESTful desenvolvida em **C#** com **ASP.NET Core**, utilizando **Entity Fra
 
 | Método | Endpoint             | Descrição                         | Status |
 |--------|--------------------|-----------------------------------|--------|
-| GET    | `/produtos`         | Lista todos os produtos           | ![GET](https://img.shields.io/badge/GET-OK-brightgreen?style=for-the-badge) |
-| GET    | `/produtos/{id}`    | Retorna produto pelo ID           | ![GET](https://img.shields.io/badge/GET-OK-brightgreen?style=for-the-badge) |
-| POST   | `/produtos`         | Cria novo produto                 | ![POST](https://img.shields.io/badge/POST-OK-blue?style=for-the-badge) |
-| PUT    | `/produtos/{id}`    | Atualiza produto existente        | ![PUT](https://img.shields.io/badge/PUT-OK-yellow?style=for-the-badge) |
-| DELETE | `/produtos/{id}`    | Deleta produto pelo ID            | ![DELETE](https://img.shields.io/badge/DELETE-OK-red?style=for-the-badge) |
+| GET    | `/produtos`         | Lista todos os produtos           | 
+| GET    | `/produtos/{id}`    | Retorna produto pelo ID           | 
+| POST   | `/produtos`         | Cria novo produto                 |
+| PUT    | `/produtos/{id}`    | Atualiza produto existente        | 
+| DELETE | `/produtos/{id}`    | Deleta produto pelo ID            | 
 
 ### Exemplo de JSON para POST/PUT
 
@@ -92,4 +91,4 @@ Swagger UI
 ## Licença
 
 Este projeto está licenciado sob 
-![License](https://img.shields.io/badge/MIT-black?style=for-the-badge).
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white).
