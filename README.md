@@ -88,6 +88,29 @@ Abrir no Postman
 Swagger UI
  – Se estiver habilitado no projeto
 
+ ### Proximo passo 
+ 💼 4. Extras (para deixar profissional)
+
+✨ Para um sistema completo de loja de roupas:
+
+Autenticação e login (JWT) → para controle de acesso de funcionários.
+
+Relatórios:
+
+Vendas do mês.
+
+Produto mais vendido.
+
+Lucro total.
+
+Categoria de produto:
+
+Exemplo: Camisa, Calça, Acessório etc.
+
+Integração com pagamentos (mock ou real).
+
+Exportar relatórios em PDF/Excel.
+
 ## Licença
 
 Este projeto está licenciado sob 
