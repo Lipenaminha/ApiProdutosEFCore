@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ApiProdutos.Services.ClienteService;
 using ApiProdutos.Models;
+using ApiProdutos.DTOs;
+using AutoMapper;
 
 
 namespace ApiProdutos.Controllers
@@ -11,28 +13,34 @@ namespace ApiProdutos.Controllers
     {
         private readonly ClienteService _service;
 
-        public ClienteController(ClienteService service)
+        private readonly IMapper _mapper;
+
+        public ClienteController(ClienteService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Listar()
         {
             var clientes = _service.ObterTodosClientes();
-            return Ok(clientes);
+            var clientesDto = _mapper.Map<List<ClienteDTO>>(clientes);
+            return Ok(clientesDto);
         }
 
         [HttpPost]
-        public IActionResult Adicionar(Cliente cliente)
+        public IActionResult Adicionar([FromBody] ClienteDTO clienteDto)
         {
+            var cliente = _mapper.Map<Cliente>(clienteDto);
             _service.AdicionarCliente(cliente);
             return Ok("Cliente adicionado com sucesso!");
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarCliente(Cliente cliente)
+        public IActionResult AtualizarCliente([FromBody] ClienteDTO clienteDto)
         {
+            var cliente = _mapper.Map<Cliente>(clienteDto);
             _service.AtualizarCliente(cliente);
             return Ok("Cliente atualizado com sucesso!");
         }

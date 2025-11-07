@@ -22,7 +22,16 @@ namespace ApiProdutos.Services.ProdutoService
 
         public void AtualizarProduto(Produto produto)
         {
-            _context.Produtos.Update(produto);
+            var existente = _context.Produtos.Find(produto.Id);
+
+            if (existente == null)
+                throw new Exception("Produto não encontrado!");
+
+            // Atualiza apenas os campos que podem mudar
+            existente.Nome = produto.Nome;
+            existente.Preco = produto.Preco;
+            existente.QuantidadeEstoque = produto.QuantidadeEstoque;
+
             _context.SaveChanges();
         }
 

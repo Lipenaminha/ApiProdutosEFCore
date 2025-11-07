@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using ApiProdutos.Services.VendaService;
 using ApiProdutos.Models;
+using AutoMapper;
+using ApiProdutos.DTOs;
 
 
 namespace ApiProdutos.Controllers
@@ -12,14 +14,18 @@ namespace ApiProdutos.Controllers
     {
         private readonly VendaService _service;
 
-        public VendaController(VendaService service)
+        private readonly IMapper _mapper;
+
+        public VendaController(VendaService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult AdicionarVenda([FromBody] Venda venda)
+        public IActionResult AdicionarVenda([FromBody] VendaDTO vendaDto)
         {
+            var venda = _mapper.Map<Venda>(vendaDto); // transforma DTO em Model
             _service.AdicionarVenda(venda);
             return Ok("Venda adicionada com sucesso!");
         }
@@ -28,7 +34,8 @@ namespace ApiProdutos.Controllers
         public IActionResult ObterTodasVendas()
         {
             var vendas = _service.ObterTodasVendas();
-            return Ok(vendas);
+            var vendasDto = _mapper.Map<List<VendaDTO>>(vendas); // Model → DTO
+            return Ok(vendasDto);
         }
     }
 } 

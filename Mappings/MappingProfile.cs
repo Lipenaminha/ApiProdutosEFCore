@@ -8,7 +8,14 @@ namespace ApiProdutos.Mappings
     {
         public MappingProfile()
         {
+            // Produto
             CreateMap<Produto, ProdutoDTO>().ReverseMap();
+
+            // Cliente
+            CreateMap<Cliente, ClienteDTO>().ReverseMap();
+
+            // Venda
+            CreateMap<Venda, VendaDTO>().ReverseMap();
         }
     }
 }

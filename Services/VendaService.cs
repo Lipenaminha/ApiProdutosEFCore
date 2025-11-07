@@ -20,7 +20,7 @@ namespace ApiProdutos.Services.VendaService
             var produto = _context.Produtos.Find(venda.ProdutoId);
             if (produto != null)
             {
-                produto.AtualizarEstoque(venda.QuantidadeEstoque);
+                produto.AtualizarEstoque(venda.Quantidade);
                 _context.Produtos.Update(produto);
             }
 

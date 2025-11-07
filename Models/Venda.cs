@@ -1,6 +1,5 @@
 
 
-
 namespace ApiProdutos.Models
 {
     public class Venda
@@ -10,7 +9,8 @@ namespace ApiProdutos.Models
         public Produto Produto { get; set; } = null!;
         public int ClienteId { get; set; }
         public Cliente Cliente { get; set; } = null!;
-        public int QuantidadeEstoque { get; set; }
+
+           public int Quantidade { get; set; }
         public DateTime DataVenda { get; set; } = DateTime.Now;
     }
 }

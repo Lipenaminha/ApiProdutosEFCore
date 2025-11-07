@@ -4,81 +4,167 @@
 ![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-API RESTful desenvolvida em **C#** com **ASP.NET Core**, utilizando **Entity Framework Core** com **SQLite**. Permite gerenciar produtos com **CRUD completo**.
+API RESTful desenvolvida em C# com ASP.NET Core 7, utilizando Entity Framework Core com SQLite.
+O sistema permite gerenciar Produtos, Clientes e Vendas, com CRUD completo, DTOs, AutoMapper e autenticação JWT.
 
 ---
 
 ## Funcionalidades
 
-- Criar produtos  
-- Listar todos os produtos  
-- Consultar produto por ID  
-- Atualizar produto existente  
-- Deletar produtos  
+🔐 Autenticação com JWT
+Login e geração de token de acesso.
+📦 Produtos
+Cadastrar, listar, buscar, atualizar e excluir produtos.
+👤 Clientes
+Gerenciar cadastro de clientes.
+💰 Vendas
+Registrar vendas, calcular lucro e vincular cliente/produto.
+⚙️ Camadas organizadas
+Controllers, Services, Models, DTOs e AutoMapper configurados.
+💾 Persistência
+Banco de dados SQLite com Entity Framework Core.
 
 ---
 
 ## Tecnologias Utilizadas
 
-- **C#**  
-- **.NET 7**  
-- **ASP.NET Core Web API**  
-- **Entity Framework Core**  
-- **SQLite**  
-- **Visual Studio / VS Code**  
+#### C#
+#### .NET 7 (ASP.NET Core Web API)
+#### Entity Framework Core
+#### SQLite
+#### AutoMapper
+#### JWT Authentication
+#### Swagger
+#### Visual Studio 
 
 ---
 
 ## Estrutura do Projeto
 
-- `Produto.cs` – Model do produto  
-- `AppDbContext.cs` – Contexto do EF Core  
-- `Program.cs` – Configuração da aplicação e endpoints  
-- `Migrations/` – Histórico de migrações do EF Core  
+ApiProdutos/
+│
+├── Controllers/
+
+│   ├── AuthController.cs
+│   ├── ProdutoController.cs
+│   ├── ClienteController.cs
+│   └── VendaController.cs
+
+│
+├── DTOs/
+
+│   ├── ProdutoDTO.cs
+│   ├── ClienteDTO.cs
+│   └── VendaDTO.cs
+
+│
+├── Models/
+
+│   ├── Produto.cs
+│   ├── Cliente.cs
+│   └── Venda.cs
+
+│
+├── Services/
+
+│   ├── ProdutoService.cs
+│   ├── ClienteService.cs
+│   ├── VendaService.cs
+│   └── JwtService.cs
+
+│
+├── Data/
+
+│   └── AppDbContext.cs
+
+│
+├── Profiles/
+
+│   └── MappingProfile.cs
+
+│
+├── Program.cs
+
+└── Migrations/
 
 ---
 
-## Endpoints
 
-| Método | Endpoint             | Descrição                         | Status |
-|--------|--------------------|-----------------------------------|--------|
-| GET    | `/produtos`         | Lista todos os produtos           | 
-| GET    | `/produtos/{id}`    | Retorna produto pelo ID           | 
-| POST   | `/produtos`         | Cria novo produto                 |
-| PUT    | `/produtos/{id}`    | Atualiza produto existente        | 
-| DELETE | `/produtos/{id}`    | Deleta produto pelo ID            | 
+## 🔗 Endpoints Principais
 
-### Exemplo de JSON para POST/PUT
+### 🔒 Autenticação
+Método	Endpoint	Descrição
+POST	/api/auth/login	Login e geração de token
 
- ```json
+### 📦 Produtos
+Método	Endpoint	Descrição
+GET	/api/produto	Lista todos os produtos
+GET	/api/produto/{id}	Busca produto por ID
+POST	/api/produto	Cadastra novo produto
+PUT	/api/produto/{id}	Atualiza produto existente
+DELETE	/api/produto/{id}	Remove produto
+
+### 👤 Clientes
+Método	Endpoint	Descrição
+GET	/api/cliente	Lista todos os clientes
+GET	/api/cliente/{id}	Busca cliente por ID
+POST	/api/cliente	Cadastra novo cliente
+PUT	/api/cliente/{id}	Atualiza cliente existente
+DELETE	/api/cliente/{id}	Remove cliente
+
+### 💰 Vendas
+Método	Endpoint	Descrição
+GET	/api/venda	Lista todas as vendas
+GET	/api/venda/{id}	Busca venda por ID
+POST	/api/venda	Registra nova venda
+DELETE	/api/venda/{id}	Remove venda
+
+
+###  📦 Exemplo de JSON – Criar Produto
 {
-  "nome": "Produto Exemplo",
-  "preco": 49.90,
-  "quantidade": 10
+  "nome": "Camisa Polo",
+  "preco": 89.90,
+  "quantidade": 20
 }
-```
 
-### Como Executar 
+🔑 Exemplo de Login
+{
+  "usuario": "admin",
+  "senha": "123456"
+}
 
-1. Clone o repositório:
-git clone https://github.com/seu-usuario/ApiProdutos.git
 
-2. Entre na pasta do projeto:
+Retorno:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5..."
+}
+
+
+### ⚙️ Como Executar o Projeto
+
+Clone o repositório:
+git clone https://github.com/Lipenaminha/ApiProdutosEFCore?tab=readme-ov-file
+
+Entre na pasta:
 cd ApiProdutos
 
-3. Restaure as dependências:
+
+Restaure as dependências:
 dotnet restore
 
-4. Crie o banco de dados aplicando as migrações:
-dotnet tool
+
+Crie o banco e aplique migrações:
 dotnet ef migrations add Initial
 dotnet ef database update
 
-5. Execute a aplicação: 
-dotnet run 
 
-6. Acesse a API em: 
-https://localhost:5052/produtos
+Execute a aplicação:
+dotnet run
+
+
+Acesse no navegador:
+https://localhost:5052/swagger
 
 ### Testando a API
 
@@ -88,29 +174,7 @@ Abrir no Postman
 Swagger UI
  – Se estiver habilitado no projeto
 
- ### Proximo passo 
- 💼 4. Extras (para deixar profissional)
-
-✨ Para um sistema completo de loja de roupas:
-
-Autenticação e login (JWT) → para controle de acesso de funcionários.
-
-Relatórios:
-
-Vendas do mês.
-
-Produto mais vendido.
-
-Lucro total.
-
-Categoria de produto:
-
-Exemplo: Camisa, Calça, Acessório etc.
-
-Integração com pagamentos (mock ou real).
-
-Exportar relatórios em PDF/Excel.
-
+ 
 ## Licença
 
 Este projeto está licenciado sob 
